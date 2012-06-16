@@ -1,11 +1,12 @@
 <% if current_user %>
   <%= render :partial => 'logo' %>
-  Welcome <%= current_user.name %>!
-  <%= link_to "Sign Out", signout_path %>
-  <div id='introduction'><h1><i>What do I want to do today?</i></h1></div>
-  <div><% @categories.each do |category| %>
-    <h2><%= link_to category.category, "/categories/#{category.id}" %></h2>
-  <% end %></div>
+  <p>Welcome <%= current_user.name %>!</p>
+  <ul data-role="listview" data-inset="true">
+    <li data-role="list-divider" role="heading"><h1>What do I want to do today?</li>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.category, "/categories/#{category.id}" %></li>
+    <% end %>
+  </ul>
 <% else %>
   <%= render :partial => 'logo' %>
   <p>Facilitating spontaneity, making new friends!</p>
