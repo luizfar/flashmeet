@@ -4,3 +4,9 @@
 <% else %>
   <%= link_to "Sign in with Twitter", "/auth/twitter" %>
 <% end %>
+<div id='introduction'><h1><i>What do I want to do today?</i></h1></div>
+
+
+<div><% @categories.each{ |category|         %>
+  <h2><%= category.category %>          </h2>
+<% } %></div>
