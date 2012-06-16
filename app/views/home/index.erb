@@ -2,12 +2,49 @@
   <%= render :partial => 'logo' %>
   <p class="intro-message">Welcome <%= current_user.name %>!</p>
   <div class="clearfix"></div>
-  <ul data-role="listview" data-inset="true">
+  <ul data-role="listview" data-inset="true" id="categories-list">
     <li data-role="list-divider" role="heading"><h1>What do I want to do today?</li>
     <% @categories.each do |category| %>
       <li><%= link_to category.category, "/categories/#{category.id}" %></li>
     <% end %>
   </ul>
+  <script>
+    var FM = FM || {};
+    FM.location = (function () {
+      var self = {};
+
+      function showPosition(position) {
+        var anchors = $("#categories-list").find("a");
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        $.each(anchors, function (index, value) {
+          value = $(value);
+          var href = value.attr("href");
+          console.log(href);
+          var newHref = href + "?lat=" + lat + "&lon=" + lon;
+          value.attr("href", newHref);
+        });
+      }
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else{
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+
+      self.init = function () {
+        getLocation();
+      };
+
+      return self;
+    })();
+
+    $(function () {
+      FM.location.init();
+    });
+  </script>
 <% else %>
   <%= render :partial => 'logo' %>
   <p>Facilitating spontaneity, making new friends!</p>
