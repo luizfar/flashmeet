@@ -19,6 +19,7 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new
     @meetup.category = category
     @meetup.location = location
+    @meetup.users << current_user
 
     respond_to do |format|
       if @meetup.save

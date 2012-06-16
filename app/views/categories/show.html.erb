@@ -24,17 +24,18 @@
     <br>
     Created at: <%= meetup.created_at %>
     <br>
-    <%= link_to 'Join them!', meetup_join_path(meetup) %>
+        Attending:
+        <br>
+        <% meetup.users.each do |user| %>
+            <%= user.name %>
+            <br>
+        <% end %>
+        <%= link_to 'Join them!', meetup_join_path(meetup), 'data-role' => 'button' %>
     <br>
-    Attending:
-    <br>
-    <% meetup.users.each do |user| %>
-      <%= user.name %>
-      <br>
-    <% end %>
+
   <% end %>
 <% end %>
 
 <div id="create-new-meetup">
-  <%= link_to "Create new #{@category.category} meetup!", :controller => :meetups, :action => :new , :category_id =>  @category.id %>
+  <%= link_to "Create new #{@category.category} meetup!", "/meetups/new?category_id=#{@category.id}", 'data-role' => 'button','data-ajax' => 'false' %>
 </div>
