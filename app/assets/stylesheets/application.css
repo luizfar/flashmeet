@@ -27,6 +27,11 @@
 }
 
 .intro-message {
-  display: inline-block;
+  clear: both;
   float: right;
+  margin-top: 40px;
+}
+
+.clearfix {
+  clear: both;
 }
