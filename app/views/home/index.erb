@@ -9,5 +9,5 @@
 <% else %>
   <%= render :partial => 'logo' %>
   <p>Facilitating spontaneity, making new friends!</p>
-  <%= link_to "Sign in with Twitter", path_to_login, 'data-role' => 'button' %>
+  <%= link_to "Sign in with Twitter", path_to_login, 'data-role' => 'button', 'data-ajax' => 'false' %>
 <% end %>
