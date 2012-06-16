@@ -133,7 +133,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   heroku
   jquery-rails
-  mysql2 (= 0.3.11)
+  mysql2
   omniauth-twitter
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
