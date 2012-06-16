@@ -8,7 +8,7 @@ gem 'rails', '3.2.1'
 gem 'mysql2'
 gem 'omniauth-twitter'
 gem 'heroku'
-
+gem 'jquery_mobile_rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
