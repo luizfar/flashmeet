@@ -3,7 +3,7 @@ Flashmeet::Application.routes.draw do
   root :to => 'home#index'
   
   resources :users
-  resources :categories
+  resources :categories, :only => [:show, :index]
   resources :meetups
 
   match 'auth/:provider/callback', to: 'sessions#create'

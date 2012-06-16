@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  def is_attending(meetup)
+    meetup.users.include?(self)
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth["provider"]
