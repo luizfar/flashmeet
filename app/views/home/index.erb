@@ -1,6 +1,6 @@
 <% if current_user %>
   <%= render :partial => 'logo' %>
-  <p>Welcome <%= current_user.name %>!</p>
+  <p class="intro-message">Welcome <%= current_user.name %>!</p>
   <ul data-role="listview" data-inset="true">
     <li data-role="list-divider" role="heading"><h1>What do I want to do today?</li>
     <% @categories.each do |category| %>
