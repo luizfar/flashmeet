@@ -2,6 +2,8 @@
 <h3><%= @notice %></h3>
 <%end %>
 
+<%= render :partial => '/home/logo' %>
+
 <% if @meetups_i_am_not_attending.present? %>
   <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
     <li data-role="list-divider" role="heading">Some people are already meeting up to <%= @category.uncapitalized_name %>, join them!</li>
