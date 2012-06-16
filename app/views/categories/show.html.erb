@@ -1,10 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h2>Some people are already meeting up to <%= @category.category %>:</h2>
 
-<p>
-  <b>Category:</b>
-  <%= @category.category %>
-</p>
-
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<% @meetups.each do |meetup| %>
+  Location: <%= meetup.location %>
+  <br>
+  Created at: <%= meetup.created_at %>
+  <br>
+  <%= link_to 'Join them!', meetup_join_path(meetup) %>
+  <br>
+  Attending:
+  <br>
+  <% meetup.users.each do |user| %>
+    <%= user.name %>
+    <br>
+  <% end %>
+<% end %>

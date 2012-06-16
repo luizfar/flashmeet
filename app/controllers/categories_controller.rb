@@ -1,6 +1,4 @@
 class CategoriesController < ApplicationController
-  # GET /categories
-  # GET /categories.json
   def index
     @categories = Category.all
 
@@ -10,10 +8,9 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # GET /categories/1
-  # GET /categories/1.json
   def show
     @category = Category.find(params[:id])
+    @meetups = Meetup.where(:category_id => @category.id)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -2,9 +2,9 @@
   Welcome <%= current_user.name %>!
   <%= link_to "Sign Out", signout_path %>
   <div id='introduction'><h1><i>What do I want to do today?</i></h1></div>
-  <div><% @categories.each{ |category|         %>
-    <h2><%= category.category %>          </h2>
-  <% } %></div>
+  <div><% @categories.each do |category| %>
+    <h2><%= link_to category.category, "/categories/#{category.id}" %></h2>
+  <% end %></div>
 <% else %>
   <%= link_to "Sign in with Twitter", path_to_login %>
 <% end %>

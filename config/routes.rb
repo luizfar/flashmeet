@@ -1,13 +1,15 @@
 Flashmeet::Application.routes.draw do
-  resources :categories
-
+  
   root :to => 'home#index'
   
   resources :users
+  resources :categories
+  resources :meetups
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
+  match 'meetups/join/:id', to: 'meetups#join', as: 'meetup_join'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
