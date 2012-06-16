@@ -1,3 +1,6 @@
+<% if @notice %>
+<h3><%= @notice %></h3>
+<%end %>
 <% if @meetups_i_am_attending.present? %>
   <h2>Meetups I am going to:</h2>
   <% @meetups_i_am_attending.each do |meetup| %>
@@ -31,3 +34,7 @@
     <% end %>
   <% end %>
 <% end %>
+
+<div id="create-new-meetup">
+  <%= link_to "Create new #{@category.category} meetup!", :controller => :meetups, :action => :new , :category_id =>  @category.id %>
+</div>

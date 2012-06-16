@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @notice = params[:notice]
     all_meetups = Meetup.where(:category_id => @category.id)
     @meetups_i_am_attending = all_meetups.find_all { |meetup| current_user.is_attending meetup }
     @meetups_i_am_not_attending = all_meetups.find_all { |meetup| !current_user.is_attending meetup }
