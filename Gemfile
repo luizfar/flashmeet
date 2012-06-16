@@ -6,7 +6,6 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '0.3.11'
-gem 'pg'
 gem 'omniauth-twitter'
 gem 'heroku'
 
