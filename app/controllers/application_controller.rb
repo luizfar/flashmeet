@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :ensure_logged_in
+  helper_method :current_user
 
-  def ensure_logged_in
-    if !@user
-      redirect_to "/auth/twitter"
-    end
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
 end
