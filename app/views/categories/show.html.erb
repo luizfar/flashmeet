@@ -12,10 +12,12 @@
           <p><span class="label">Created at:</span> <%= meetup.created_at %></p>
           <p><span class="label">Attending:</span></p>
           <% meetup.users.each do |user| %>
-            <% if user.avatar.present? %>
-              <div class="avatar"></div>
-            <% end %>
-            <%= user.name %>
+            <div class="user-details">
+              <% if user.avatar.present? %>
+                <div class="avatar"></div>
+              <% end %>
+              <%= user.name %>
+            </div>
           <% end %>
           <%= link_to 'Join them!', meetup_join_path(meetup), 'data-role' => 'button' %>
         </div>
@@ -34,10 +36,12 @@
           <p><span class="label">Created at:</span> <%= meetup.created_at %></p>
           <p><span class="label">Attending:</span></p>
           <% meetup.users.each do |user| %>
-            <% if user.avatar.present? %>
-              <div class="avatar"></div>
-            <% end %>
-            <%= user.name %>
+            <div class="user-details">
+              <% if user.avatar.present? %>
+                <div class="avatar"></div>
+              <% end %>
+              <%= user.name %>
+            </div>
           <% end %>
         </div>
       </li>
