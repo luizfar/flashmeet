@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Javascript geo sample</title>
+	<script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/geo.js?id=1" type="text/javascript" charset="utf-8"></script>
+	<!-- jQuery hosted on Google -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type ="text/javascript" src="my_jquery_functions.js"></script>
+</head>	
+<body>
+	<b>Get Location</b>
+	<script>
+		if(geo_position_js.init()){
+			geo_position_js.getCurrentPosition(success_callback,error_callback,{enableHighAccuracy:true});
+		}
+		else{
+			alert("Location functionality not available");
+		}
+
+		function success_callback(p)
+		{
+			//$(".position").text("Lat:" p.coords.latitude.toFixed(2) + "<br>" + "Long:" p.coords.longitude.toFixed(2));
+			alert('lat='+p.coords.latitude.toFixed(2)+';lon='+p.coords.longitude.toFixed(2));
+		}
+		
+		function error_callback(p)
+		{
+			alert('error='+p.code);
+		}		
+	</script>
+	<p class="position"></p>
+	</body>
+	
+</html>
