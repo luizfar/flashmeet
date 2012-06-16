@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616153654) do
+ActiveRecord::Schema.define(:version => 20120616170651) do
 
   create_table "categories", :force => true do |t|
     t.string   "category"
@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(:version => 20120616153654) do
     t.string   "avatar"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.text     "auth_hash"
+    t.string   "provider"
+    t.string   "uid"
   end
 
 end
