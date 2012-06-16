@@ -1,39 +1,48 @@
 <% if @notice %>
 <h3><%= @notice %></h3>
 <%end %>
-<% if @meetups_i_am_attending.present? %>
-  <h2>Meetups I am going to:</h2>
-  <% @meetups_i_am_attending.each do |meetup| %>
-    Location: <%= meetup.location %>
-    <br>
-    Created at: <%= meetup.created_at %>
-    <br>
-    Attending:
-    <br>
-    <% meetup.users.each do |user| %>
-      <%= user.name %>
-      <br>
-    <% end %>
-  <% end %>
-<% end %>
 
 <% if @meetups_i_am_not_attending.present? %>
-  <h2>Some people are already meeting up to <%= @category.category %>:</h2>
-  <% @meetups_i_am_not_attending.each do |meetup| %>
-    Location: <%= meetup.location %>
-    <br>
-    Created at: <%= meetup.created_at %>
-    <br>
-        Attending:
-        <br>
-        <% meetup.users.each do |user| %>
+  <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+    <li data-role="list-divider" role="heading">Some people are already meeting up to <%= @category.uncapitalized_name %>, join them!</li>
+    <% @meetups_i_am_not_attending.each do |meetup| %>
+      <li>
+        <div class="meetup">
+          <p><span class="label">Location:</span> <%= meetup.location %></p>
+          <p><span class="label">Created at:</span> <%= meetup.created_at %></p>
+          <p><span class="label">Attending:</span></p>
+          <% meetup.users.each do |user| %>
+            <% if user.avatar.present? %>
+              <div class="avatar"></div>
+            <% end %>
             <%= user.name %>
-            <br>
-        <% end %>
-        <%= link_to 'Join them!', meetup_join_path(meetup), 'data-role' => 'button' %>
-    <br>
+          <% end %>
+          <%= link_to 'Join them!', meetup_join_path(meetup), 'data-role' => 'button' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
-  <% end %>
+<% if @meetups_i_am_attending.present? %>
+  <ul data-role="listview" data-inset="true" data-theme="e" data-dividertheme="a">
+    <li data-role="list-divider" role="heading">Meetups I am going to:</li>
+    <% @meetups_i_am_attending.each do |meetup| %>
+      <li>
+        <div class="meetup">
+          <p><span class="label">Location:</span> <%= meetup.location %></p>
+          <p><span class="label">Created at:</span> <%= meetup.created_at %></p>
+          <p><span class="label">Attending:</span></p>
+          <% meetup.users.each do |user| %>
+            <% if user.avatar.present? %>
+              <div class="avatar"></div>
+            <% end %>
+            <%= user.name %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <div id="create-new-meetup">

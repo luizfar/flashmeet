@@ -32,6 +32,15 @@
   margin-top: 40px;
 }
 
+.label {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.meetup {
+  padding: 12px 0;
+}
+
 .clearfix {
   clear: both;
 }
